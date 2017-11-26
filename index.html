@@ -44,16 +44,23 @@
 	</header>
 	
 	<!-- Container Block -->
-	<div class="container-fluid px-3 border border-light">
-		<!-- Compiler Action Bar -->
-		<nav class="navbar navbar-light bg-light">
-			<button class="btn btn-sm btn-outline-primary" type="button">MP-Prove</button>
-		</nav>
-	
-		<!-- Main Content Block -->
-		<main role="main">
-			<div id="code"></div>
-		</main>
+	<div class="container-fluid w-100 px-4">
+		<div id="page-content" class="card">
+			<div class="card-header">
+				<div class="btn-toolbar" role="toolbar" aria-label="Action Toolbar">
+					<div class="btn-group mr-auto" role="group" aria-label="Compiler Buttons">
+						<button class="btn btn-outline-primary" type="button">MP-Prove</button>
+					</div>
+					<span class="d-none d-sm-block my-auto mr-2 text-muted">Change Font Size:</span>
+					<button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
+					<button id="fontDecrease" class="btn btn-sm btn-outline-primary" type="button"><i class="fa fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<!-- CodeMirror Editor -->
+				<div id="code" class="h-100"></div>
+			</div>
+		</div>
 	</div>
 	
 	<!-- Page Footer -->
@@ -75,13 +82,42 @@
 	
 	<!-- CodeMirror Rendering JavaScript -->
 	<script type="text/javascript">
-		window.onload = function() {
-			editor = CodeMirror(document.getElementById("code"), {
+		$( window ).on( "load", function() {
+			var editor = CodeMirror(document.getElementById("code"), {
 				lineNumbers: true,
 				mode: "javascript",
-				theme: "elegant"
+				theme: "elegant",
+				value: "function myScript() {\n\treturn 100;\n}\n"
 			});
-		};
+		});
+		
+		$( "#fontIncrease" ).click(function() {
+			// Increase font size
+			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
+			currentFontSize = parseFloat(currentFontSize) * 1.2;
+			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
+			
+			// Increase gutter width
+			var currentGutterWidth = $( ".CodeMirror-linenumbers" ).css("width");
+			currentGutterWidth = parseFloat(currentGutterWidth) * 1.075;
+			$( ".CodeMirror-linenumbers" ).css("width", currentGutterWidth);
+			
+			return false;
+		});
+		
+		$( "#fontDecrease" ).click(function() {
+			// Decrease font size
+			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
+			currentFontSize = parseFloat(currentFontSize) / 1.2;
+			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
+			
+			// Decrease gutter width
+			var currentGutterWidth = $( ".CodeMirror-linenumbers" ).css("width");
+			currentGutterWidth = parseFloat(currentGutterWidth) / 1.075;
+			$( ".CodeMirror-linenumbers" ).css("width", currentGutterWidth);
+			
+			return false;
+		});
 	</script>
 </body>
 

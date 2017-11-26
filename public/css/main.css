@@ -1,7 +1,7 @@
 /*
  * These are the CSS for the RESOLVEMinimalistWebUI Pages
  * Created by: Yu-Shan Sun
- * Last Modified: 11/14/2017
+ * Last Modified: 11/25/2017
  */
 
 /* General CSS */
@@ -27,6 +27,18 @@ body {
 
 #page-header .nav-link:hover {
 	color: #FFFFFF;
+}
+
+/* Main Content-Related CSS */
+#page-content {
+	position: relative;
+	top: 0px;
+	bottom: 60px;
+	height: calc(100vh - 120px);
+}
+
+#page-content .CodeMirror {
+	height: 100%;
 }
 
 /* Footer-Related CSS */
