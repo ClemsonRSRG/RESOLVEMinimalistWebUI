@@ -45,6 +45,10 @@ body {
 	height: 100%;
 }
 
+#page-content .CodeMirror-gutters {
+	padding-right: 5px;
+}
+
 /* Footer-Related CSS */
 #page-footer {
 	/* Sticky footer */
