@@ -1,7 +1,6 @@
 {
   "extends": ["stylelint-config-standard"],
   "plugins": [
-    "stylelint-csstree-validator",
     "stylelint-order"
   ],
   "rules": {
@@ -18,9 +17,10 @@
     "font-weight-notation": "numeric",
     "function-url-no-scheme-relative": true,
     "function-url-quotes": "always",
+    "indentation": 4,
     "length-zero-no-unit": true,
     "max-empty-lines": [ 2, {
-      ignore: ["comments"]
+      "ignore": ["comments"]
     } ],
     "max-line-length": null,
     "media-feature-name-no-vendor-prefix": true,
@@ -221,7 +221,7 @@
     "selector-max-class": 4,
     "selector-max-combinators": 4,
     "selector-max-compound-selectors": 4,
-    "selector-max-id": 0,
+    "selector-max-id": 1,
     "selector-max-specificity": null,
     "selector-max-type": 2,
     "selector-max-universal": 1,

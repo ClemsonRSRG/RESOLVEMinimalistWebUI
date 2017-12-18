@@ -1,0 +1,84 @@
+/*
+ * These are the CSS for the the CodeMirror Editor version
+ * Created by: Yu-Shan Sun
+ * Last Modified: 12/18/2017
+ */
+
+/* General CSS */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Leaving space for footer */
+    margin-bottom: 60px;
+}
+
+/* Header-Related CSS */
+#page-header {
+    min-height: 60px;
+    background-color: #522d80;
+}
+
+#page-header .nav-link {
+    color: #d4c99e;
+}
+
+#page-header .nav-link:hover {
+    color: #fff;
+}
+
+#page-header .dropdown-menu {
+    min-width: 0;
+}
+
+#page-header .dropdown-item {
+    color: #109dc0;
+}
+
+#page-header .dropdown-item:hover {
+    color: #fff;
+    background-color: #3a4958;
+    opacity: 0.15;
+}
+
+#page-header .dropdown-item:active {
+    color: #109dc0;
+    background-color: #fff;
+    opacity: 1;
+}
+
+/* Main Content-Related CSS */
+#page-content {
+    position: relative;
+    top: 0;
+    bottom: 60px;
+    height: calc(100vh - 120px);
+}
+
+#page-content .card-body {
+    overflow-y: hidden;
+}
+
+#page-content .CodeMirror {
+    height: 100%;
+}
+
+#page-content .CodeMirror-gutters {
+    padding-right: 5px;
+}
+
+/* Footer-Related CSS */
+#page-footer {
+    /* Sticky footer */
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    background-color: #3a4958;
+    opacity: 0.75;
+}
+
+#page-footer-content {
+    background-color: #3a4958;
+}

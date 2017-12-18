@@ -38,8 +38,8 @@ eslint:
   config_file: .eslintrc
   ignore_file: .houndignore
  
- # stylelint (CSS)
- stylelint:
+# stylelint (CSS)
+stylelint:
   enabled: true
   config_file: .stylelintrc
   ignore_file: .houndignore

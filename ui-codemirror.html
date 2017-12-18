@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<!-- Meta -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	
+	<title>RESOLVEMinimalistWebUI</title>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
+		integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.css" 
+		integrity="sha256-ocsH57eUY9pDJgPCOUIkWm60KNyVV8pexKFnGgXCyGs=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/theme/elegant.css" 
+		integrity="sha256-At+BZ4vozwp4DkMDlbD2Trd4/qwiFqOx7KtShIq8j+Y=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="public/css/codemirror-ui.css">
+	
+	<!-- CodeMirror JavaScript Library -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/codemirror.min.js" 
+		integrity="sha256-DwOSyzubDSUBuTD5ZphKKqQvSiApzpViHgvFAIeZjKE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.32.0/mode/javascript/javascript.min.js" 
+		integrity="sha256-5RDlwDVu4Wf04L1rgFfDCIovRIL+mQwvXhRKsjAm3pU=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<!-- Page Header -->
+	<header id="page-header" class="navbar navbar-expand navbar-dark flex-column flex-md-row">
+		<h1 class="navbar-brand mb-0">RESOLVEMinimalistWebUI <span class="badge badge-pill badge-info">CodeMirror Editor</span></h1>
+		<ul class="navbar-nav flex-row ml-md-auto">
+			<li class="nav-item dropdown mr-md-2">
+				<a class="nav-link dropdown-toggle pb-0" href="#" id="editorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Switch Editor</a>
+				<div class="dropdown-menu dropdown-menu-right m-0" aria-labelledby="editorDropdown">
+					<a class="dropdown-item text-center" href="ui-ace.html">Ace</a>
+					<a class="dropdown-item text-center" href="#">CodeMirror</a>
+				</div>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://www.cs.clemson.edu/resolve/" target="_blank"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; RSRG Home</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://resolve.cs.clemson.edu/beginToReason/" target="_blank"><i class="fa fa-external-link fa-fw" aria-hidden="true"></i>&nbsp; BeginToReason</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="https://resolve.cs.clemson.edu/" target="_blank"><i class="fa fa-external-link fa-fw" aria-hidden="true"></i>&nbsp; WebIDE</a>
+			</li>
+		</ul>
+	</header>
+	
+	<!-- Container Block -->
+	<div class="container-fluid w-100 px-4">
+		<div id="page-content" class="card">
+			<div class="card-header">
+				<div class="btn-toolbar" role="toolbar" aria-label="Action Toolbar">
+					<div class="btn-group mr-auto" role="group" aria-label="Compiler Buttons">
+						<button class="btn btn-outline-primary" type="button">MP-Prove</button>
+					</div>
+					<span class="d-none d-sm-block my-auto mr-2 text-muted">Change Font Size:</span>
+					<button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fa fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
+					<button id="fontDecrease" class="btn btn-sm btn-outline-primary" type="button"><i class="fa fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
+				</div>
+			</div>
+			<div class="card-body p-0">
+				<!-- CodeMirror Editor -->
+				<div id="code" class="h-100"></div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Page Footer -->
+	<footer id="page-footer" class="footer w-100 pt-2">
+		<div id="page-footer-content" class="d-flex flex-column">
+			<span class="text-light text-center">This research is funded in part by NSF grants CCF-1161916 and DUE-1611714.</span>
+		</div>
+	</footer>
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
+		integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	
+	<!-- CodeMirror Rendering JavaScript -->
+	<script type="text/javascript">
+		$( window ).on( "load", function() {
+			var editor = CodeMirror(document.getElementById("code"), {
+				lineNumbers: true,
+				mode: "javascript",
+				theme: "elegant",
+				value: "function myScript() {\n\treturn 100;\n}"
+			});
+		});
+		
+		$( "#fontIncrease" ).click(function() {
+			// Increase font size
+			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
+			currentFontSize = parseFloat(currentFontSize) * 1.2;
+			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
+			
+			// Increase gutter width
+			var currentGutterWidth = $( ".CodeMirror-linenumbers" ).css("width");
+			currentGutterWidth = parseFloat(currentGutterWidth) * 1.075;
+			$( ".CodeMirror-linenumbers" ).css("width", currentGutterWidth);
+			
+			return false;
+		});
+		
+		$( "#fontDecrease" ).click(function() {
+			// Decrease font size
+			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
+			currentFontSize = parseFloat(currentFontSize) / 1.2;
+			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
+			
+			// Decrease gutter width
+			var currentGutterWidth = $( ".CodeMirror-linenumbers" ).css("width");
+			currentGutterWidth = parseFloat(currentGutterWidth) / 1.075;
+			$( ".CodeMirror-linenumbers" ).css("width", currentGutterWidth);
+			
+			return false;
+		});
+	</script>
+</body>
+
+</html>
