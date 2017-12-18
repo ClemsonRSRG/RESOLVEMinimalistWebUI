@@ -11,67 +11,67 @@ html {
 }
 
 body {
-	/* Leaving space for footer */
+    /* Leaving space for footer */
     margin-bottom: 60px;
 }
 
 /* Header-Related CSS */
 #page-header {
-	min-height: 60px;
-	background-color: #522d80;
+    min-height: 60px;
+    background-color: #522d80;
 }
 
 #page-header .nav-link {
-	color: #d4c99e;
+    color: #d4c99e;
 }
 
 #page-header .nav-link:hover {
-	color: #fff;
+    color: #fff;
 }
 
 #page-header .dropdown-menu {
-	min-width: 0;
+    min-width: 0;
 }
 
 #page-header .dropdown-item {
-	color: #109dc0;
+    color: #109dc0;
 }
 
 #page-header .dropdown-item:hover {
-	color: #fff;
-	background-color: #3a4958;
-	opacity: 0.15;
+    color: #fff;
+    background-color: #3a4958;
+    opacity: 0.15;
 }
 
 #page-header .dropdown-item:active {
-	color: #109dc0;
-	background-color: #fff;
-	opacity: 1;
+    color: #109dc0;
+    background-color: #fff;
+    opacity: 1;
 }
 
 /* Main Content-Related CSS */
 #page-content {
-	position: relative;
-	top: 0;
-	bottom: 60px;
-	height: calc(100vh - 120px);
+    position: relative;
+    top: 0;
+    bottom: 60px;
+    height: calc(100vh - 120px);
 }
 
 #page-content .card-body {
-	overflow-y: hidden;
+    overflow-y: hidden;
 }
 
 #page-content .CodeMirror {
-	height: 100%;
+    height: 100%;
 }
 
 #page-content .CodeMirror-gutters {
-	padding-right: 5px;
+    padding-right: 5px;
 }
 
 /* Footer-Related CSS */
 #page-footer {
-	/* Sticky footer */
+    /* Sticky footer */
     position: absolute;
     bottom: 0;
     height: 60px;
