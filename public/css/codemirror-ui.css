@@ -67,6 +67,7 @@ body {
 
 #page-content .CodeMirror-gutters {
     padding-right: 5px;
+    min-width: 55px;
 }
 
 /* Footer-Related CSS */
