@@ -1,5 +1,6 @@
 RESOLVEMinimalistWebUI
 ==============
+[![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://raw.githubusercontent.com/ClemsonRSRG/RESOLVEMinimalistWebUI/master/LICENSE.txt)
 
 (* Description of `RESOLVEMinimalistWebUI` goes here *)
 
