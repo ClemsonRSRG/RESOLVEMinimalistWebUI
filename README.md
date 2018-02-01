@@ -32,13 +32,13 @@ institutions.
 Developers of this particular test/working-iteration of the `RESOLVEMinimalistWebUI`  
 include:
 
-* [The Reusable Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/) - School of Computing, Clemson University
+* [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/) - School of Computing, Clemson University
 
 ## Copyright and license
 
-Copyright (c) Clemson University, 2018. All rights reserved. The use and
-distribution terms for this software are covered by the BSD 3-clause license
-which can be found in the file `LICENSE.txt` at the root of this repository.
+Copyright © 2018, [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/). All rights reserved. 
+The use and distribution terms for this software are covered by the BSD 3-clause 
+license which can be found in the file `LICENSE.txt` at the root of this repository.
 By using this software in any fashion, you are agreeing to be bound by the terms
 of this license. You must not remove this notice, or any other, from this
 software.
