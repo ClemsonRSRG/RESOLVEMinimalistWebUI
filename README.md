@@ -3,14 +3,14 @@ RESOLVEMinimalistWebUI
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://raw.githubusercontent.com/ClemsonRSRG/RESOLVEMinimalistWebUI/master/LICENSE.txt)
 
 The purpose of this project is to provide a simplified version of a web-based interface for interacting 
-with the RESOLVE compiler. It interacts with the [RESOLVEWebAPI]() via `WebSocket` calls to retrieve and 
-display the verification conditions (VCs) and the results from the automated prover. This project is 
+with the RESOLVE compiler. It interacts with the [RESOLVEWebAPI](https://github.com/ClemsonRSRG/RESOLVEWebAPI) 
+via `WebSocket` calls to retrieve and display the results from the automated prover. This project is 
 written purely using HTML and JavaScript. 
 
 Currently, the `RESOLVEMinimalistWebUI` utilizes two popular editors written in JavaScript: 
-[AceEditor]() and [CodeMirror]() for writing and displaying RESOLVE code. 
+[AceEditor](https://ace.c9.io/) and [CodeMirror](https://codemirror.net/) for writing and displaying RESOLVE code. 
 Although the appearance might vary slightly, the way how it interacts with the RESOLVE compiler and 
-how VCs are being displayed should be almost identical. 
+how results are being displayed should be almost identical. 
 
 ## What is RESOLVE?
 
