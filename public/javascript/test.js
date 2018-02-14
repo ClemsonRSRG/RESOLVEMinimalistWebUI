@@ -12,11 +12,11 @@ function addNewCodeMirrorGutter(cmEditor) {
             vcMarker = cmEditor.lineInfo(Number(vcs[i].line)).gutterMarkers.vcs;
             vcMarker.setAttribute("title", vcMarker.getAttribute("title") + ", " + vcs[i].vcID);
         } else {
-            vcMarker = document.createElement("span");
+            vcMarker = document.createElement("a");
+            vcMarker.setAttribute("href", "#");
             vcMarker.setAttribute("class", "badge badge-pill badge-primary");
-            vcMarker.setAttribute("data-toggle", "tooltip");
-            vcMarker.setAttribute("data-placement", "left");
-            vcMarker.setAttribute("title", "Show VCs: " + vcs[i].vcID);
+            vcMarker.setAttribute("data-toggle", "modal");
+            vcMarker.setAttribute("data-target", "#vcModal");
             vcMarker.innerHTML = "VC";
 
             // Add it to the gutter
