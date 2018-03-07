@@ -12,12 +12,19 @@ function addNewCodeMirrorGutter(cmEditor) {
             vcMarker = cmEditor.lineInfo(Number(vcs[i].line)).gutterMarkers.vcs;
             vcMarker.setAttribute("title", vcMarker.getAttribute("title") + ", " + vcs[i].vcID);
         } else {
+            // Processing VC icon
+            var processing_icon = document.createElement("img");
+            processing_icon.setAttribute("src", "public/images/vc_processing.png");
+            processing_icon.setAttribute("alt", "VC Processing Icon");
+            processing_icon.setAttribute("style", "width:22.5px;height:22.5px;border:0;")
+            
+            // Create a vc marker using the processing icon.
             vcMarker = document.createElement("a");
             vcMarker.setAttribute("href", "#");
-            vcMarker.setAttribute("class", "badge badge-pill badge-primary");
             vcMarker.setAttribute("data-toggle", "modal");
             vcMarker.setAttribute("data-target", "#vcModal");
-            vcMarker.innerHTML = "VC";
+            vcMarker.setAttribute("title", "VC(s): " + vcs[i].vcID);
+            vcMarker.innerHTML = processing_icon.outerHTML;
 
             // Add it to the gutter
             cmEditor.setGutterMarker(Number(vcs[i].line), "vcs", vcMarker);
