@@ -53,7 +53,7 @@
 			<div class="card-header">
 				<div class="btn-toolbar" role="toolbar" aria-label="Action Toolbar">
 					<div class="btn-group mr-auto" role="group" aria-label="Compiler Buttons">
-						<button class="btn btn-outline-primary" type="button">MP-Prove</button>
+						<button id="verifyButton" class="btn btn-outline-primary" type="button" onclick="submit()">MP-Prove</button>
 					</div>
 					<span class="d-none d-sm-block my-auto mr-2 text-muted">Change Font Size:</span>
 					<button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
@@ -62,7 +62,43 @@
 			</div>
 			<div class="card-body p-0">
 				<!-- Ace Editor -->
-				<div id="code" class="h-100"></div>
+				<div id="editor" class="h-100"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div id="vcModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header bg-info text-white">
+					<h5 class="modal-title" id="vcModalLabel">Showing VCs</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body p-0">
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="vcTab" role="tablist">
+								<li class="nav-item">
+									<a class="nav-link active" id="vc0_1_tab" data-toggle="tab" href="#vc0_1_tab" role="tab" aria-controls="vc0_1_tab" aria-selected="true">VC #1</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" id="vc0_2_tab" data-toggle="tab" href="#vc0_2_tab" role="tab" aria-controls="vc0_2_tab" aria-selected="true">VC #2</a>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-1">
+							<div class="d-flex flex-column h-100">
+								<div id="vcEditor"></div>
+								<div id="vcInfo" class="px-4 py-2">
+									<pre>VC Information Goes Here</pre>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -80,33 +116,14 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
 	<!-- Ace Rendering JavaScript -->
+	<script src="public/javascript/ace/main.js"></script>
+	<script src="public/javascript/ace/mode-resolve.js"></script>
+	<script src="public/javascript/ace/editorUpdate.js"></script>
 	<script src="public/javascript/test.js"></script>
 	<script type="text/javascript">
-		$( window ).on( "load", function() {
-			var editor = ace.edit("code");
-			editor.setTheme("ace/theme/tomorrow");
-			editor.session.setMode("ace/mode/text");
-			editor.session.setValue(decode("Realization%20Iterative_Append_Realiz%20for%20Append_Capability%20of%20Queue_Template%3B%0A%20%20%20%20--%20will%20not%20verify%20because%20loop%20invariant%20is%20not%20adequate%0A%20%20%20%20Procedure%20Append%28updates%20P%3A%20Queue%3B%20clears%20Q%3A%20Queue%29%3B%0A%20%20%20%20%20%20%20%20Var%20E%3A%20Entry%3B%0A%0A%20%20%20%20%20%20%20%20While%20%28%201%20%3C%3D%20Length%28Q%29%20%29%0A%20%20%20%20%20%20%20%20%20%20--%20fill%20in%20a%20suitable%20invariant%0A%20%20%20%20%20%20%20%20%20%20maintaining%20true%3B%0A%20%20%20%20%20%20%20%20%20%20decreasing%20%7CQ%7C%3B%0A%20%20%20%20%20%20%20%20do%0A%20%20%20%20%20%20%20%20%20%20Dequeue%28E%2CQ%29%3B%0A%20%20%20%20%20%20%20%20%20%20Enqueue%28E%2CP%29%3B%0A%20%20%20%20%20%20%20%20end%3B%0A%20%20%20%20end%20Append%3B%0Aend%20Iterative_Append_Realiz%3B"));
-			editor.setFontSize(16);
-			editor.setReadOnly(true);
-		});
-		
-		$( "#fontIncrease" ).click(function() {
-			// Increase font size
-			var currentFontSize = $( "#code" ).css("font-size");
-			currentFontSize = parseFloat(currentFontSize) * 1.2;
-			$( "#code" ).css("font-size", currentFontSize);
-			
-			return false;
-		});
-		
-		$( "#fontDecrease" ).click(function() {
-			// Decrease font size
-			var currentFontSize = $( "#code" ).css("font-size");
-			currentFontSize = parseFloat(currentFontSize) / 1.2;
-			$( "#code" ).css("font-size", currentFontSize);
-			
-			return false;
+		$(document).ready(function () {
+			createEditor();
+			createVCEditor();
 		});
 	</script>
 </body>

@@ -13,18 +13,18 @@ function addNewCodeMirrorGutter(cmEditor) {
             vcMarker.setAttribute("title", vcMarker.getAttribute("title") + ", " + vcs[i].vcID);
         } else {
             // Processing VC icon
-            var processing_icon = document.createElement("img");
-            processing_icon.setAttribute("src", "public/images/vc_processing.png");
-            processing_icon.setAttribute("alt", "VC Processing Icon");
-            processing_icon.setAttribute("style", "width:22.5px;height:22.5px;border:0;")
-            
+            var processingIcon = document.createElement("img");
+            processingIcon.setAttribute("src", "public/images/vc_processing.png");
+            processingIcon.setAttribute("alt", "VC Processing Icon");
+            processingIcon.setAttribute("style", "width:22.5px;height:22.5px;border:0;");
+
             // Create a vc marker using the processing icon.
             vcMarker = document.createElement("a");
             vcMarker.setAttribute("href", "#");
             vcMarker.setAttribute("data-toggle", "modal");
             vcMarker.setAttribute("data-target", "#vcModal");
             vcMarker.setAttribute("title", "VC(s): " + vcs[i].vcID);
-            vcMarker.innerHTML = processing_icon.outerHTML;
+            vcMarker.innerHTML = processingIcon.outerHTML;
 
             // Add it to the gutter
             cmEditor.setGutterMarker(Number(vcs[i].line), "vcs", vcMarker);
@@ -104,7 +104,7 @@ function getVCs() {
         var vcID = obj.vc;
         if (typeof vcID !== "undefined") {
             var sf = obj.sourceFile;
-            var vcLine = obj.lineNum;
+            var vcLine = obj.lineNum - 1;
             var vcCase = obj.vcInfo;
             var vcGoal = htmlEncodeGTLT(decode(obj.vcGoal));
             var vcGiven = htmlEncodeGTLT(decode(obj.vcGivens));
