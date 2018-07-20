@@ -8,6 +8,9 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	
 	<title>RESOLVEMinimalistWebUI</title>
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/png" href="public/images/resolve_logo.png">
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" 
@@ -24,47 +27,56 @@
 </head>
 <body>
 	<!-- Page Header -->
-	<header id="page-header" class="navbar navbar-expand navbar-dark flex-column flex-md-row">
-		<h1 class="navbar-brand mb-0">RESOLVEMinimalistWebUI <span class="badge badge-pill badge-info">Ace Editor</span></h1>
-		<ul class="navbar-nav flex-row ml-md-auto">
-			<li class="nav-item dropdown mr-md-2">
-				<a class="nav-link dropdown-toggle pb-0" href="#" id="editorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Switch Editor</a>
-				<div class="dropdown-menu dropdown-menu-right m-0" aria-labelledby="editorDropdown">
-					<a class="dropdown-item text-center" href="#">Ace</a>
-					<a class="dropdown-item text-center" href="ui-codemirror.html">CodeMirror</a>
-				</div>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="https://www.cs.clemson.edu/resolve/" target="_blank"><i class="fas fa-home fa-fw" aria-hidden="true"></i>&nbsp; RSRG Home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="https://resolve.cs.clemson.edu/beginToReason/" target="_blank"><i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>&nbsp; BeginToReason</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="https://resolve.cs.clemson.edu/" target="_blank"><i class="fas fa-external-link-alt fa-fw" aria-hidden="true"></i>&nbsp; WebIDE</a>
-			</li>
-		</ul>
-	</header>
-	
-	<!-- Container Block -->
-	<div class="container-fluid w-100 px-4">
-		<div id="page-content" class="card">
-			<div class="card-header">
-				<div class="btn-toolbar" role="toolbar" aria-label="Action Toolbar">
-					<div class="btn-group mr-auto" role="group" aria-label="Compiler Buttons">
-						<button id="verifyButton" class="btn btn-outline-primary" type="button" onclick="submit()">MP-Prove</button>
-					</div>
-					<span class="d-none d-sm-block my-auto mr-2 text-muted">Change Font Size:</span>
-					<button id="fontIncrease" class="btn btn-sm btn-outline-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
-					<button id="fontDecrease" class="btn btn-sm btn-outline-primary" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
-				</div>
+	<header id="page-header" class="d-flex flex-column">
+		<nav class="navbar navbar-expand navbar-dark flex-column flex-lg-row" role="navigation">
+			<div class="navbar-brand">
+				<img src="public/images/resolve_logo.png" class="d-none d-sm-inline-flex" width="40" height="40" alt="Clemson RESOLVE Logo">
+				<span id="site-title" class="pl-1 text-center align-bottom">RESOLVEMinimalistWebUI</span>
+				<span class="badge badge-pill badge-info d-none d-sm-inline-flex">Ace Editor</span>
 			</div>
-			<div class="card-body p-0">
+			<ul class="navbar-nav flex-row ml-lg-auto align-items-center text-center">
+				<li class="nav-item dropdown mb-1 d-none d-sm-inline-flex">
+					<a class="nav-link dropdown-toggle pb-0" href="#" id="editorDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Switch Editor</a>
+					<div class="dropdown-menu dropdown-menu-right m-0" aria-labelledby="editorDropdown">
+						<a class="dropdown-item text-center" href="#">Ace</a>
+						<a class="dropdown-item text-center" href="ui-codemirror.html">CodeMirror</a>
+					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://www.cs.clemson.edu/resolve/" target="_blank"><i class="fas fa-home fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>RSRG Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://resolve.cs.clemson.edu/beginToReason/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>BeginToReason</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="https://resolve.cs.clemson.edu/" target="_blank"><i class="fas fa-external-link-alt fa-fw d-none d-sm-inline-flex" aria-hidden="true"></i><span class="d-none d-sm-inline-flex">&nbsp; </span>WebIDE</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+
+	<!-- Page Content -->
+	<main id="page-content" role="main">
+		<div class="container-fluid">
+			<div id="editorContent" class="d-flex flex-column border">
+				<!-- Editor Toolbar -->
+				<div id="editorToolbar" class="p-2 bg-light border-bottom text-muted">
+					<div class="btn-toolbar font-weight-light" role="toolbar" aria-label="Editor Toolbar">
+						<div id="compilerButtons" class="mr-auto">
+							<button id="verifyButton" class="btn btn-success" type="button" onclick="submit()">Verify</button>
+						</div>
+						<div id="fontButtons" class="d-inline-flex">
+							<span class="d-none d-md-block my-auto mr-2">Change Font Size:</span>
+							<button id="fontIncrease" class="btn btn-sm btn-primary mr-1" type="button"><i class="fas fa-plus fa-fw" aria-hidden="true" title="+"></i></button>
+							<button id="fontDecrease" class="btn btn-sm btn-primary" type="button"><i class="fas fa-minus fa-fw" aria-hidden="true" title="-"></i></button>
+						</div>
+					</div>
+				</div>
 				<!-- Ace Editor -->
-				<div id="editor" class="h-100"></div>
+				<div id="editor" class="flex-grow-1 p-0"></div>
 			</div>
 		</div>
-	</div>
+	</main>
 
 	<!-- Modal -->
 	<div id="vcModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcModalLabel" aria-hidden="true">
@@ -103,9 +115,15 @@
 	</div>
 	
 	<!-- Page Footer -->
-	<footer id="page-footer" class="footer w-100 pt-2">
-		<div id="page-footer-content" class="d-flex flex-column">
-			<span class="text-light text-center">This research is funded in part by NSF grants CCF-1161916 and DUE-1611714.</span>
+	<footer id="page-footer" class="footer w-100 py-2">
+		<div class="d-flex flex-column flex-md-row justify-content-md-around align-items-center" style="background-color: inherit;">
+			<div class="d-flex flex-row align-items-center px-2">
+				<img src="public/images/rsrg-logo4.svg" width="60" height="60" class="d-none d-sm-inline-flex mr-2" alt="Clemson RSRG Logo 2">
+				<div class="d-flex flex-column">
+					<div id="copyright">Copyright &#9400; 2018 Clemson RSRG.</div>
+					<div id="grants-institutions" class="pt-1">This research is funded in part by NSF grants CCF-1161916, DUE-1022941 and DUE-1611714.</div>
+				</div>
+			</div>
 		</div>
 	</footer>
 

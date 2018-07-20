@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="215 136 218 214.55102">
+  <defs>
+    <font-face font-family="Avenir Next" font-size="72" panose-1="2 11 9 3 2 2 2 9 2 4" units-per-em="1000" underline-position="-75" underline-thickness="50" slope="-166.66667" x-height="526" cap-height="708" ascent="1e3" descent="-365.9973" font-style="italic" font-weight="800">
+      <font-face-src>
+        <font-face-name name="AvenirNext-HeavyItalic"/>
+      </font-face-src>
+    </font-face>
+  </defs>
+  <metadata> Produced by OmniGraffle 7.7.1 
+    <dc:date>2018-03-10 15:39:45 +0000</dc:date>
+  </metadata>
+  <g id="Canvas_1" fill-opacity="1" stroke-dasharray="none" stroke="none" stroke-opacity="1" fill="none">
+    <title>Canvas 1</title>
+    <g id="Canvas_1: Layer 1">
+      <title>Layer 1</title>
+      <g id="Graphic_10">
+        <path d="M 243.5347 247 L 325.4043 247 C 328.4419 247 330.9043 249.46243 330.9043 252.5 C 330.9043 252.90594 330.85938 253.31063 330.7703 253.70668 L 309.95787 346.2577 C 309.39344 348.76766 307.1645 350.551 304.59187 350.551 L 222.72227 350.551 C 219.6847 350.551 217.22227 348.0886 217.22227 345.051 C 217.22227 344.6451 217.2672 344.2404 217.35627 343.84434 L 238.16872 251.29332 C 238.73314 248.78336 240.96207 247 243.5347 247 Z" fill="#ff8c5f"/>
+      </g>
+      <g id="Graphic_9">
+        <path d="M 344.25623 247 L 426.12584 247 C 429.1634 247 431.62584 249.46243 431.62584 252.5 C 431.62584 252.90594 431.5809 253.31063 431.49183 253.70668 L 410.6794 346.2577 C 410.11496 348.76766 407.88603 350.551 405.3134 350.551 L 323.4438 350.551 C 320.4062 350.551 317.9438 348.0886 317.9438 345.051 C 317.9438 344.6451 317.98873 344.2404 318.0778 343.84434 L 338.89023 251.29332 C 339.45466 248.78336 341.6836 247 344.25623 247 Z" fill="#ff8c5f"/>
+      </g>
+      <g id="Graphic_8">
+        <path d="M 242.6866 136 L 324.5562 136 C 327.5938 136 330.0562 138.46243 330.0562 141.5 C 330.0562 141.90594 330.01127 142.31063 329.9222 142.70668 L 309.10977 235.2577 C 308.54534 237.76766 306.3164 239.55102 303.74377 239.55102 L 221.87416 239.55102 C 218.8366 239.55102 216.37416 237.0886 216.37416 234.05102 C 216.37416 233.64508 216.4191 233.2404 216.50817 232.84434 L 237.3206 140.29332 C 237.88504 137.78336 240.11397 136 242.6866 136 Z" fill="#ff8c5f"/>
+      </g>
+      <g id="Graphic_7">
+        <path d="M 343.40813 136 L 425.27773 136 C 428.3153 136 430.77773 138.46243 430.77773 141.5 C 430.77773 141.90594 430.7328 142.31063 430.64373 142.70668 L 409.8313 235.2577 C 409.26686 237.76766 407.03793 239.55102 404.4653 239.55102 L 322.5957 239.55102 C 319.5581 239.55102 317.0957 237.0886 317.0957 234.05102 C 317.0957 233.64508 317.14062 233.2404 317.2297 232.84434 L 338.04213 140.29332 C 338.60656 137.78336 340.8355 136 343.40813 136 Z" fill="#ff8c5f"/>
+      </g>
+      <g id="Graphic_6">
+        <text transform="translate(249.41772 139.21429)" fill="white">
+          <tspan font-family="Avenir Next" font-size="72" font-style="italic" font-weight="800" fill="white" x=".156" y="72">R</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <text transform="translate(351.98734 139.21429)" fill="white">
+          <tspan font-family="Avenir Next" font-size="72" font-style="italic" font-weight="800" fill="white" x=".364" y="72">S</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <text transform="translate(249.41772 250.66327)" fill="white">
+          <tspan font-family="Avenir Next" font-size="72" font-style="italic" font-weight="800" fill="white" x=".156" y="72">R</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <text transform="translate(348.4 250.26438)" fill="white">
+          <tspan font-family="Avenir Next" font-size="72" font-style="italic" font-weight="800" fill="white" x=".032" y="72">G</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>

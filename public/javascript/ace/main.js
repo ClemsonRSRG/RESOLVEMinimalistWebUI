@@ -111,6 +111,9 @@ function showVCDetails(e) {
             var line = e.getDocumentPosition().row;
             populateVCInfo(line);
 
+            // Hide tooltip
+            $(target).tooltip("hide");
+
             // Show VC modal
             $("#vcModal").modal("show");
         }
