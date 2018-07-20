@@ -66,6 +66,7 @@ body {
 }
 
 #page-content .CodeMirror-gutters {
+    min-width: 55px;
     padding-right: 5px;
 }
 

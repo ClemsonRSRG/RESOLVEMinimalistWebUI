@@ -61,6 +61,39 @@ body {
     overflow-y: hidden;
 }
 
+/* ACE Editor-Related CSS */
+.ace_folding-enabled > .ace_gutter-cell {
+    padding-right: 10px;
+    padding-left: 30px;
+}
+
+.ace_gutter-cell.ace_vc {
+    background-image: url("../images/vc_processing.png");
+    background-repeat: no-repeat;
+    background-position: 5px center;
+    background-size: 20px 20px;
+}
+
+/* Line Highlighting-Related CSS */
+.vc_info {
+    position: absolute;
+    z-index: 5000;
+    box-sizing: border-box;
+    pointer-events: auto;
+    background: #add8e6;
+    opacity: 0.3;
+}
+
+.vc_info:hover {
+    background: #00bfff;
+    opacity: 0.3;
+}
+
+/* VC Modal-Related CSS */
+#vcModal .card-body {
+    min-height: 250px;
+}
+
 /* Footer-Related CSS */
 #page-footer {
     /* Sticky footer */

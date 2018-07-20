@@ -14,8 +14,8 @@ how results are being displayed should be almost identical.
 
 ## What is RESOLVE?
 
-RESOLVE (REusable SOftware Language with VErification) is a programming and
-specification language designed for verifying correctness of object oriented
+RESOLVE (REusable SOftware Language with VErification) is a specification and
+programming language designed for verifying correctness of object oriented
 programs.
 
 The RESOLVE language is designed from the ground up to facilitate *mathematical
@@ -43,8 +43,8 @@ include:
 
 ## Copyright and license
 
-Copyright © 2018, [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/). All rights reserved. 
-The use and distribution terms for this software are covered by the BSD 3-clause 
+Copyright © 2018, [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/). 
+All rights reserved. The use and distribution terms for this software are covered by the BSD 3-clause 
 license which can be found in the file `LICENSE.txt` at the root of this repository.
 By using this software in any fashion, you are agreeing to be bound by the terms
 of this license. You must not remove this notice, or any other, from this
