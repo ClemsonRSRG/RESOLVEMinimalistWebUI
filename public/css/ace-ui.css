@@ -1,7 +1,7 @@
 /*
  * These are the CSS for the Ace Editor version
  * Created by: Yu-Shan Sun
- * Last Modified: 12/18/2017
+ * Last Modified: 07/20/2018
  */
 
 /* General CSS */
@@ -13,20 +13,33 @@ html {
 body {
     /* Leaving space for footer */
     margin-bottom: 60px;
+    background-color: #fdfdfd !important;
 }
 
 /* Header-Related CSS */
 #page-header {
-    min-height: 60px;
-    background-color: #522d80;
+    min-height: 70px;
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    #page-header {
+        min-height: 110px;
+    }
+}
+
+#page-header .navbar {
+    min-height: inherit;
+    background-color: #3a4958 !important;
 }
 
 #page-header .nav-link {
-    color: #d4c99e;
+    font-size: 0.95rem;
+    color: #d4c99e !important;
 }
 
 #page-header .nav-link:hover {
-    color: #fff;
+    color: #337ab7 !important;
 }
 
 #page-header .dropdown-menu {
@@ -34,31 +47,48 @@ body {
 }
 
 #page-header .dropdown-item {
-    color: #109dc0;
+    color: #109dc0 !important;
 }
 
 #page-header .dropdown-item:hover {
-    color: #fff;
-    background-color: #3a4958;
+    color: #fff !important;
+    background-color: #3a4958 !important;
     opacity: 0.15;
 }
 
 #page-header .dropdown-item:active {
-    color: #109dc0;
-    background-color: #fff;
+    color: #109dc0 !important;
+    background-color: #fff !important;
     opacity: 1;
+}
+
+#site-title {
+    font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 1.75rem;
+    font-weight: 200 !important;
 }
 
 /* Main Content-Related CSS */
 #page-content {
     position: relative;
     top: 0;
-    bottom: 60px;
-    height: calc(100vh - 120px);
+    bottom: 80px;
+    height: calc(100vh - 150px);
+    overflow: hidden;
 }
 
-#page-content .card-body {
-    overflow-y: hidden;
+#editorContent {
+    height: calc(100vh - 150px);
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+    #page-content,
+    #editor-content {
+        height: calc(100vh - 190px);
+    }
 }
 
 /* ACE Editor-Related CSS */
@@ -99,11 +129,17 @@ body {
     /* Sticky footer */
     position: absolute;
     bottom: 0;
-    height: 60px;
-    background-color: #3a4958;
-    opacity: 0.75;
+    height: 80px;
+    color: #fdfdfd !important;
+    background-color: #86898c !important;
 }
 
-#page-footer-content {
-    background-color: #3a4958;
+#page-footer .footer-link {
+    font-size: 1rem;
+    color: #343a40 !important;
+    text-decoration: none;
+}
+
+#page-footer .footer-link:hover {
+    color: #337ab7 !important;
 }
