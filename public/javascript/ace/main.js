@@ -89,7 +89,7 @@ function showGutterTooltip(e) {
             $(target).tooltip({
                 placement: "bottom",
                 template: "<div class=\"tooltip\" role=\"tooltip\"><div class=\"tooltip-inner\"></div></div>",
-                title: "Click for VC details!"
+                title: "Click VC icon for details!"
             });
             $(target).tooltip("show");
         }
