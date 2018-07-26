@@ -174,36 +174,50 @@ function createVCEditor() {
  * to render a VC object.
  */
 function createVCTabs(vc, isActive) {
-    // New HTML Object #1: VC Content
-    var contentDiv = document.createElement("div");
-    var contentDivID = "vc_" + vc.vcID + "_detail";
-
-    // New HTML Object #2: Tab
-    var tabLink = document.createElement("a");
+    // IDs for the different HTML objects.
+    var detailDivID = "vc_" + vc.vcID + "_detail";
     var tabLinkID = "vc_" + vc.vcID + "_tab";
-    tabLink.setAttribute("id", tabLinkID);
-    
+
+    // New HTML Object #1: VC Detail Div
+    var detailDiv = document.createElement("div");
+    detailDiv.setAttribute("id", detailDivID);
+
     if (isActive) {
-        // Add active if needed
-        tabLink.setAttribute("class", "nav-link active");
+        // Add 'show' and 'active'
+        detailDiv.setAttribute("class", "tab-pane fade show active");
+    } else {
+        detailDiv.setAttribute("class", "tab-pane fade");
     }
-    else {
+
+    detailDiv.setAttribute("role", "tabpanel");
+    detailDiv.setAttribute("aria-labelledby", tabLinkID);
+
+    // New HTML Object #2: Tab Link
+    var tabLink = document.createElement("a");
+    tabLink.setAttribute("id", tabLinkID);
+
+    if (isActive) {
+        // Add 'active'
+        tabLink.setAttribute("class", "nav-link active");
+    } else {
         tabLink.setAttribute("class", "nav-link");
     }
 
     tabLink.setAttribute("data-toggle", "tab");
-    tabLink.setAttribute("href", "#" + contentDivID);
+    tabLink.setAttribute("href", "#" + detailDivID);
     tabLink.setAttribute("role", "tab");
-    tabLink.setAttribute("aria-controls", contentDivID);
+    tabLink.setAttribute("aria-controls", detailDivID);
     tabLink.setAttribute("aria-selected", isActive);
     tabLink.appendChild(document.createTextNode("VC " + vc.vcID));
 
+    // New HTML Object #3: Tab
     var tabLi = document.createElement("li");
     tabLi.setAttribute("class", "nav-item");
     tabLi.appendChild(tabLink);
 
-    // Add the new elements
+    // Add the tab and vc detail div
     $("#vcTab").append(tabLi);
+    $("#vcTabContent").append(detailDiv);
 }
 
 /*
@@ -236,7 +250,7 @@ function populateVCInfo(lineNum) {
     // Create new tabs to display all the VCs on this line
     var vcsAtLine = lineVCMap.get(lineNum);
     for (var i = 0; i < vcsAtLine.length; i++) {
-        createVCTabs(vcsAtLine[i], (i == 0));
+        createVCTabs(vcsAtLine[i], i == 0);
     }
 
     // Resize the editor
