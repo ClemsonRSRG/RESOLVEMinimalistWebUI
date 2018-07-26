@@ -4,8 +4,8 @@
 // Global Variables //
 //////////////////////
 
-var aceEditor; // This is the ACE Editor embeded to the page.
-var lineInfoMap; // This contains vc information for each line in the current file.
+var aceEditor; // This is the ACE Editor embedded to the page.
+var lineVCMap; // This contains vc information for each line in the current file.
 var ResolveMode; // RESOLVE mode for ACE Editor.
 var vcAceEditor; // This is the ACE Editor in our modal.
 var vcs; // This stores the VCs for the current file.
@@ -125,9 +125,16 @@ function showVCDetails(e) {
 ////////////////////////////////
 
 /*
- * Function for clearing the content in VC Editor.
+ * Function for clearing all content in VC Modal.
  */
-function clearVCEditor() {
+function clearContentInModal() {
+    // Delete all tabs
+    $("#vcTab").empty();
+
+    // Delete all tab content
+    $("#vcTabContent").empty();
+
+    // Set the contents of the editor to empty string.
     vcAceEditor.getSession().setValue("");
 }
 
@@ -159,11 +166,48 @@ function createVCEditor() {
     vcAceEditor.resize();
 
     // Clear any lines stored inside vc modal when it is hidden
-    $("#vcModal").on("hide.bs.modal", clearVCEditor);
+    $("#vcModal").on("hide.bs.modal", clearContentInModal);
 }
 
 /*
- * Function for clearing VC information.
+ * Function for creating the proper HTML in the VC modal
+ * to render a VC object.
+ */
+function createVCTabs(vc, isActive) {
+    // New HTML Object #1: VC Content
+    var contentDiv = document.createElement("div");
+    var contentDivID = "vc_" + vc.vcID + "_detail";
+
+    // New HTML Object #2: Tab
+    var tabLink = document.createElement("a");
+    var tabLinkID = "vc_" + vc.vcID + "_tab";
+    tabLink.setAttribute("id", tabLinkID);
+    
+    if (isActive) {
+        // Add active if needed
+        tabLink.setAttribute("class", "nav-link active");
+    }
+    else {
+        tabLink.setAttribute("class", "nav-link");
+    }
+
+    tabLink.setAttribute("data-toggle", "tab");
+    tabLink.setAttribute("href", "#" + contentDivID);
+    tabLink.setAttribute("role", "tab");
+    tabLink.setAttribute("aria-controls", contentDivID);
+    tabLink.setAttribute("aria-selected", isActive);
+    tabLink.appendChild(document.createTextNode("VC " + vc.vcID));
+
+    var tabLi = document.createElement("li");
+    tabLi.setAttribute("class", "nav-item");
+    tabLi.appendChild(tabLink);
+
+    // Add the new elements
+    $("#vcTab").append(tabLi);
+}
+
+/*
+ * Function for populating VC information.
  */
 function populateVCInfo(lineNum) {
     var editorLength = aceEditor.getSession().getLength();
@@ -188,6 +232,12 @@ function populateVCInfo(lineNum) {
 
     // Add a marker to that line
     vcAceEditor.getSession().addMarker(new Range(lineNum - 1, 0, lineNum, 0), "vc_info");
+
+    // Create new tabs to display all the VCs on this line
+    var vcsAtLine = lineVCMap.get(lineNum);
+    for (var i = 0; i < vcsAtLine.length; i++) {
+        createVCTabs(vcsAtLine[i], (i == 0));
+    }
 
     // Resize the editor
     vcAceEditor.resize();
@@ -235,23 +285,23 @@ function submit() {
 
     // YS: Modify the following once we invoke the compiler
     vcs = getVCs();
-    lineInfoMap = new Map();
+    lineVCMap = new Map();
     for (var i = 0; i < vcs.length; i++) {
         var lineNum = Number(vcs[i].line);
 
         // Check to see if we need to add the icon.
-        if (lineInfoMap.get(lineNum) === undefined) {
+        if (lineVCMap.get(lineNum) === undefined) {
             // Add the icon to the gutter.
             aceEditor.session.addGutterDecoration(lineNum, "ace_vc");
 
             // Create a new array for this line number
-            lineInfoMap.set(lineNum, []);
+            lineVCMap.set(lineNum, []);
         }
 
         // Update our list of vcs on that line number
-        var vcIDs = lineInfoMap.get(lineNum);
-        vcIDs.push(vcs[i].vcID);
-        lineInfoMap.set(lineNum, vcIDs);
+        var vcsAtLine = lineVCMap.get(lineNum);
+        vcsAtLine.push(vcs[i]);
+        lineVCMap.set(lineNum, vcsAtLine);
     }
 
     // Unlock the verify button.
