@@ -178,6 +178,14 @@ function createVCTabs(vc, isActive) {
     var detailDivID = "vc_" + vc.vcID + "_detail";
     var tabLinkID = "vc_" + vc.vcID + "_tab";
 
+    // New HTML Object #1: VC Detail Content
+    var vcContentCode = document.createElement("code");
+    vcContentCode.innerHTML = displayVCInfo(vc.given, vc.goal, decode(vc.step));
+
+    var vcContentPre = document.createElement("pre");
+    vcContentPre.setAttribute("class", "my-2");
+    vcContentPre.appendChild(vcContentCode);
+
     // New HTML Object #1: VC Detail Div
     var detailDiv = document.createElement("div");
     detailDiv.setAttribute("id", detailDivID);
@@ -191,6 +199,7 @@ function createVCTabs(vc, isActive) {
 
     detailDiv.setAttribute("role", "tabpanel");
     detailDiv.setAttribute("aria-labelledby", tabLinkID);
+    detailDiv.appendChild(vcContentPre);
 
     // New HTML Object #2: Tab Link
     var tabLink = document.createElement("a");
@@ -218,6 +227,18 @@ function createVCTabs(vc, isActive) {
     // Add the tab and vc detail div
     $("#vcTab").append(tabLi);
     $("#vcTabContent").append(detailDiv);
+}
+
+/*
+ * Function for converting a resulting VC content into
+ * proper HTML object.
+ */
+function displayVCInfo(givens, goals, detail) {
+    var detailString = "<strong>" + detail + "</strong>\n\n";
+    var goalsString = "<strong>Goal(s):</strong>\n\n" + goals + "\n";
+    var givensString = "<strong>Given(s):</strong>\n\n" + givens;
+
+    return detailString + goalsString + givensString;
 }
 
 /*
