@@ -98,6 +98,7 @@ body {
 }
 
 .ace_gutter-cell.ace_vc {
+    cursor: pointer;
     background-image: url("../images/vc_processing.png");
     background-repeat: no-repeat;
     background-position: 5px center;

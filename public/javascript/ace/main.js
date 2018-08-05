@@ -4,8 +4,8 @@
 // Global Variables //
 //////////////////////
 
-var aceEditor; // This is the ACE Editor embeded to the page.
-var lineInfoMap; // This contains vc information for each line in the current file.
+var aceEditor; // This is the ACE Editor embedded to the page.
+var lineVCMap; // This contains vc information for each line in the current file.
 var ResolveMode; // RESOLVE mode for ACE Editor.
 var vcAceEditor; // This is the ACE Editor in our modal.
 var vcs; // This stores the VCs for the current file.
@@ -89,7 +89,7 @@ function showGutterTooltip(e) {
             $(target).tooltip({
                 placement: "bottom",
                 template: "<div class=\"tooltip\" role=\"tooltip\"><div class=\"tooltip-inner\"></div></div>",
-                title: "Click for VC details!"
+                title: "Click VC icon for details!"
             });
             $(target).tooltip("show");
         }
@@ -125,9 +125,16 @@ function showVCDetails(e) {
 ////////////////////////////////
 
 /*
- * Function for clearing the content in VC Editor.
+ * Function for clearing all content in VC Modal.
  */
-function clearVCEditor() {
+function clearContentInModal() {
+    // Delete all tabs
+    $("#vcTab").empty();
+
+    // Delete all tab content
+    $("#vcTabContent").empty();
+
+    // Set the contents of the editor to empty string.
     vcAceEditor.getSession().setValue("");
 }
 
@@ -159,11 +166,83 @@ function createVCEditor() {
     vcAceEditor.resize();
 
     // Clear any lines stored inside vc modal when it is hidden
-    $("#vcModal").on("hide.bs.modal", clearVCEditor);
+    $("#vcModal").on("hide.bs.modal", clearContentInModal);
 }
 
 /*
- * Function for clearing VC information.
+ * Function for creating the proper HTML in the VC modal
+ * to render a VC object.
+ */
+function createVCTabs(vc, isActive) {
+    // IDs for the different HTML objects.
+    var detailDivID = "vc_" + vc.vcID + "_detail";
+    var tabLinkID = "vc_" + vc.vcID + "_tab";
+
+    // New HTML Object #1: VC Detail Content
+    var vcContentCode = document.createElement("code");
+    vcContentCode.innerHTML = displayVCInfo(vc.given, vc.goal, decode(vc.step));
+
+    var vcContentPre = document.createElement("pre");
+    vcContentPre.setAttribute("class", "my-2");
+    vcContentPre.appendChild(vcContentCode);
+
+    // New HTML Object #1: VC Detail Div
+    var detailDiv = document.createElement("div");
+    detailDiv.setAttribute("id", detailDivID);
+
+    if (isActive) {
+        // Add 'show' and 'active'
+        detailDiv.setAttribute("class", "tab-pane fade show active");
+    } else {
+        detailDiv.setAttribute("class", "tab-pane fade");
+    }
+
+    detailDiv.setAttribute("role", "tabpanel");
+    detailDiv.setAttribute("aria-labelledby", tabLinkID);
+    detailDiv.appendChild(vcContentPre);
+
+    // New HTML Object #2: Tab Link
+    var tabLink = document.createElement("a");
+    tabLink.setAttribute("id", tabLinkID);
+
+    if (isActive) {
+        // Add 'active'
+        tabLink.setAttribute("class", "nav-link active");
+    } else {
+        tabLink.setAttribute("class", "nav-link");
+    }
+
+    tabLink.setAttribute("data-toggle", "tab");
+    tabLink.setAttribute("href", "#" + detailDivID);
+    tabLink.setAttribute("role", "tab");
+    tabLink.setAttribute("aria-controls", detailDivID);
+    tabLink.setAttribute("aria-selected", isActive);
+    tabLink.appendChild(document.createTextNode("VC " + vc.vcID));
+
+    // New HTML Object #3: Tab
+    var tabLi = document.createElement("li");
+    tabLi.setAttribute("class", "nav-item");
+    tabLi.appendChild(tabLink);
+
+    // Add the tab and vc detail div
+    $("#vcTab").append(tabLi);
+    $("#vcTabContent").append(detailDiv);
+}
+
+/*
+ * Function for converting a resulting VC content into
+ * proper HTML object.
+ */
+function displayVCInfo(givens, goals, detail) {
+    var detailString = "<strong>" + detail + "</strong>\n\n";
+    var goalsString = "<strong>Goal(s):</strong>\n\n" + goals + "\n";
+    var givensString = "<strong>Given(s):</strong>\n\n" + givens;
+
+    return detailString + goalsString + givensString;
+}
+
+/*
+ * Function for populating VC information.
  */
 function populateVCInfo(lineNum) {
     var editorLength = aceEditor.getSession().getLength();
@@ -188,6 +267,12 @@ function populateVCInfo(lineNum) {
 
     // Add a marker to that line
     vcAceEditor.getSession().addMarker(new Range(lineNum - 1, 0, lineNum, 0), "vc_info");
+
+    // Create new tabs to display all the VCs on this line
+    var vcsAtLine = lineVCMap.get(lineNum);
+    for (var i = 0; i < vcsAtLine.length; i++) {
+        createVCTabs(vcsAtLine[i], i == 0);
+    }
 
     // Resize the editor
     vcAceEditor.resize();
@@ -235,23 +320,23 @@ function submit() {
 
     // YS: Modify the following once we invoke the compiler
     vcs = getVCs();
-    lineInfoMap = new Map();
+    lineVCMap = new Map();
     for (var i = 0; i < vcs.length; i++) {
         var lineNum = Number(vcs[i].line);
 
         // Check to see if we need to add the icon.
-        if (lineInfoMap.get(lineNum) === undefined) {
+        if (lineVCMap.get(lineNum) === undefined) {
             // Add the icon to the gutter.
             aceEditor.session.addGutterDecoration(lineNum, "ace_vc");
 
             // Create a new array for this line number
-            lineInfoMap.set(lineNum, []);
+            lineVCMap.set(lineNum, []);
         }
 
         // Update our list of vcs on that line number
-        var vcIDs = lineInfoMap.get(lineNum);
-        vcIDs.push(vcs[i].vcID);
-        lineInfoMap.set(lineNum, vcIDs);
+        var vcsAtLine = lineVCMap.get(lineNum);
+        vcsAtLine.push(vcs[i]);
+        lineVCMap.set(lineNum, vcsAtLine);
     }
 
     // Unlock the verify button.
