@@ -3,49 +3,26 @@ RESOLVEMinimalistWebUI
 [![License](https://img.shields.io/badge/license-BSD-blue.svg)](https://raw.githubusercontent.com/ClemsonRSRG/RESOLVEMinimalistWebUI/master/LICENSE.txt)
 
 The purpose of this project is to provide a simplified version of a web-based interface for interacting 
-with the RESOLVE compiler. It interacts with the [RESOLVEWebAPI](https://github.com/ClemsonRSRG/RESOLVEWebAPI) 
-via `WebSocket` calls to retrieve and display the results from the automated prover. This project is 
-written purely using HTML and JavaScript. 
+with the RESOLVE compiler. It interacts with the [RESOLVEWebAPI](https://github.com/ClemsonRSRG/RESOLVEWebAPI) via `WebSocket` calls to retrieve and display the results from the automated prover. This project is written purely using HTML and JavaScript. 
 
-Currently, the `RESOLVEMinimalistWebUI` utilizes two popular editors written in JavaScript: 
-[AceEditor](https://ace.c9.io/) and [CodeMirror](https://codemirror.net/) for writing and displaying RESOLVE code. 
-Although the appearance might vary slightly, the way how it interacts with the RESOLVE compiler and 
-how results are being displayed should be almost identical. 
+Currently, the `RESOLVEMinimalistWebUI` utilizes two popular editors written in JavaScript: [AceEditor](https://ace.c9.io/) and [CodeMirror](https://codemirror.net/) for writing and displaying RESOLVE code. Although the appearance might vary slightly, the way how it interacts with the RESOLVE compiler and how results are being displayed should be almost identical. 
 
 ## What is RESOLVE?
 
-RESOLVE (REusable SOftware Language with VErification) is a specification and
-programming language designed for verifying correctness of object oriented
-programs.
+RESOLVE (REusable SOftware Language with VErification) is a specification and programming language designed for verifying correctness of object oriented programs.
 
-The RESOLVE language is designed from the ground up to facilitate *mathematical
-reasoning*. As such, the language provides syntactic slots for assertions such
-as pre-post conditions that are capable of abstractly describing a program's
-intended behavior. In writing these assertions, users are free to draw from from
-a variety of pre-existing and user-defined mathematical theories containing
-fundamental axioms, definitions, and results necessary/useful in establishing
-program correctness.
+The RESOLVE language is designed from the ground up to facilitate *mathematical reasoning*. As such, the language provides syntactic slots for assertions such as pre-post conditions that are capable of abstractly describing a program's intended behavior. In writing these assertions, users are free to draw from from a variety of pre-existing and user-defined mathematical theories containing fundamental axioms, definitions, and results necessary/useful in establishing program correctness.
 
-All phases of the verification process spanning verification condition (VC)
-generation to proving are performed in-house, while RESOLVE programs are
-translated to Java and run on the JVM.
+All phases of the verification process spanning verification condition (VC) generation to proving are performed in-house, while RESOLVE programs are translated to Java and run on the JVM.
 
 ## Authors and major contributors
-The creation and continual evolution of the RESOLVE language is owed to an
-ongoing joint effort between Clemson University, The Ohio State University, and
-countless educators and researchers from a variety of [other](https://www.cs.clemson.edu/resolve/about.html) 
-institutions.
 
-Developers of this particular test/working-iteration of the `RESOLVEMinimalistWebUI`  
-include:
+The creation and continual evolution of the RESOLVE language is owed to an ongoing joint effort between Clemson University, The Ohio State University, and countless educators and researchers from a variety of [other](https://www.cs.clemson.edu/resolve/about.html) institutions.
+
+Developers of this particular test/working-iteration of the `RESOLVEMinimalistWebUI` include:
 
 * [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/) - School of Computing, Clemson University
 
 ## Copyright and license
 
-Copyright © 2018, [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/). 
-All rights reserved. The use and distribution terms for this software are covered by the BSD 3-clause 
-license which can be found in the file `LICENSE.txt` at the root of this repository.
-By using this software in any fashion, you are agreeing to be bound by the terms
-of this license. You must not remove this notice, or any other, from this
-software.
+Copyright © 2019, [RESOLVE Software Research Group (RSRG)](https://www.cs.clemson.edu/resolve/). All rights reserved. The use and distribution terms for this software are covered by the BSD 3-clause license which can be found in the file `LICENSE.txt` at the root of this repository. By using this software in any fashion, you are agreeing to be bound by the terms of this license. You must not remove this notice, or any other, from this software.
