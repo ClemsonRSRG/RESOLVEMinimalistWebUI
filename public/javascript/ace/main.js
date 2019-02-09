@@ -246,7 +246,7 @@ function displayVCInfo(givens, goals, detail) {
  */
 function populateVCInfo(lineNum) {
     var editorLength = aceEditor.getSession().getLength();
-    var range = new Range(0, 0, 2, Number.MAX_VALUE);
+    var range;
 
     if (lineNum === 0 || lineNum === 1) {
         // Special handling if we are at the beginning of the document.
@@ -264,6 +264,9 @@ function populateVCInfo(lineNum) {
     // Store the content to the VC editor
     var selectedContent = aceEditor.getSession().getTextRange(range);
     vcAceEditor.getSession().setValue(selectedContent);
+
+    // Add the icon to the gutter.
+    vcAceEditor.getSession().addGutterDecoration(lineNum - 1, "ace_vc");
 
     // Add a marker to that line
     vcAceEditor.getSession().addMarker(new Range(lineNum - 1, 0, lineNum, 0), "vc_info");
