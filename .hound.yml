@@ -36,10 +36,10 @@ swift:
 eslint:
   enabled: true
   config_file: .eslintrc
-  ignore_file: .houndignore
+  ignore_file: .eslintignore
  
 # stylelint (CSS)
 stylelint:
   enabled: true
   config_file: .stylelintrc
-  ignore_file: .houndignore
+  ignore_file: .stylelintignore
