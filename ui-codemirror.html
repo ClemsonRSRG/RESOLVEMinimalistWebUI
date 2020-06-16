@@ -13,21 +13,81 @@
 	<link rel="icon" type="image/png" href="public/images/resolve_logo.png">
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-		integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" 
-		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/codemirror.min.css" 
-		integrity="sha256-I8NyGs4wjbMuBSUE40o55W6k6P7tu/7G28/JGUUYCIs=" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/theme/elegant.css" 
-		integrity="sha256-At+BZ4vozwp4DkMDlbD2Trd4/qwiFqOx7KtShIq8j+Y=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/codemirror.min.css" 
+		integrity="sha256-Ez4TnBJ24JkU8Z622YHGxDaYrslkqNZ62ewvn08Skco=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/theme/elegant.min.css" i
+		ntegrity="sha256-ZOOYgNTmJQQvFzbaGmqTHVf5DzkvoDqY+U0vJZt5PVg=" crossorigin="anonymous" />
 	<link rel="stylesheet" href="public/css/codemirror-ui.css">
 	
-	<!-- CodeMirror JavaScript Library -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.43.0/codemirror.min.js" 
-		integrity="sha256-BrgtBfNwB1SrWlgiHWLr7d1JfgFXNgvp4Dw3FMrrOes=" crossorigin="anonymous"></script>
+	<!-- JavaScript -->
+    <script src="https://kit.fontawesome.com/d50a2fb57f.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/codemirror.min.js" 
+		integrity="sha256-zW3RviTWD2qcjPDA/ByugxSFO5EPHb8Yl0Z6o7X9Zqk=" crossorigin="anonymous"></script>
 </head>
 <body>
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+	<!-- CodeMirror Rendering JavaScript -->
+	<script src="public/javascript/test.js"></script>
+	<script type="text/javascript">
+		var editor;
+		var clicked = false;
+		$( window ).on( "load", function() {
+			editor = CodeMirror(document.getElementById("code"), {
+				gutters: ["CodeMirror-linenumbers", "vcs"],
+				lineNumbers: true,
+				mode: null,
+				readOnly: true,
+				theme: "elegant",
+				value: decode("Realization%20Iterative_Append_Realiz%20for%20Append_Capability%20of%20Queue_Template%3B%0A%20%20%20%20--%20will%20not%20verify%20because%20loop%20invariant%20is%20not%20adequate%0A%20%20%20%20Procedure%20Append%28updates%20P%3A%20Queue%3B%20clears%20Q%3A%20Queue%29%3B%0A%20%20%20%20%20%20%20%20Var%20E%3A%20Entry%3B%0A%0A%20%20%20%20%20%20%20%20While%20%28%201%20%3C%3D%20Length%28Q%29%20%29%0A%20%20%20%20%20%20%20%20%20%20--%20fill%20in%20a%20suitable%20invariant%0A%20%20%20%20%20%20%20%20%20%20maintaining%20true%3B%0A%20%20%20%20%20%20%20%20%20%20decreasing%20%7CQ%7C%3B%0A%20%20%20%20%20%20%20%20do%0A%20%20%20%20%20%20%20%20%20%20Dequeue%28E%2CQ%29%3B%0A%20%20%20%20%20%20%20%20%20%20Enqueue%28E%2CP%29%3B%0A%20%20%20%20%20%20%20%20end%3B%0A%20%20%20%20end%20Append%3B%0Aend%20Iterative_Append_Realiz%3B")
+			});
+		});
+
+		$( "#verifyButton" ).click(function() {
+			// Do this if we haven't clicked yet
+			if (!clicked) {
+				addNewCodeMirrorGutter(editor);
+			}
+
+			return false;
+		});
+
+		$( "#fontIncrease" ).click(function() {
+			// Increase font size
+			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
+			currentFontSize = parseFloat(currentFontSize) * 1.2;
+			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
+			
+			// Increase gutter width
+			var currentGutterWidth = $( ".CodeMirror-gutters" ).css("width");
+			currentGutterWidth = parseFloat(currentGutterWidth) * 1.2;
+			$( ".CodeMirror-gutters" ).css("width", currentGutterWidth);
+			editor.refresh();
+			
+			return false;
+		});
+		
+		$( "#fontDecrease" ).click(function() {
+			// Decrease font size
+			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
+			currentFontSize = parseFloat(currentFontSize) / 1.2;
+			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
+			
+			// Decrease gutter width
+			var currentGutterWidth = $( ".CodeMirror-gutters" ).css("width");
+			currentGutterWidth = parseFloat(currentGutterWidth) / 1.2;
+			$( ".CodeMirror-gutters" ).css("width", currentGutterWidth);
+			editor.refresh();
+			
+			return false;
+		});
+	</script>
+
 	<!-- Page Header -->
 	<header id="page-header" class="d-flex flex-column">
 		<nav class="navbar navbar-expand navbar-dark flex-column flex-lg-row" role="navigation">
@@ -123,67 +183,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-	
-	<!-- CodeMirror Rendering JavaScript -->
-	<script src="public/javascript/test.js"></script>
-	<script type="text/javascript">
-		var editor;
-		var clicked = false;
-		$( window ).on( "load", function() {
-			editor = CodeMirror(document.getElementById("code"), {
-				gutters: ["CodeMirror-linenumbers", "vcs"],
-				lineNumbers: true,
-				mode: null,
-				readOnly: true,
-				theme: "elegant",
-				value: decode("Realization%20Iterative_Append_Realiz%20for%20Append_Capability%20of%20Queue_Template%3B%0A%20%20%20%20--%20will%20not%20verify%20because%20loop%20invariant%20is%20not%20adequate%0A%20%20%20%20Procedure%20Append%28updates%20P%3A%20Queue%3B%20clears%20Q%3A%20Queue%29%3B%0A%20%20%20%20%20%20%20%20Var%20E%3A%20Entry%3B%0A%0A%20%20%20%20%20%20%20%20While%20%28%201%20%3C%3D%20Length%28Q%29%20%29%0A%20%20%20%20%20%20%20%20%20%20--%20fill%20in%20a%20suitable%20invariant%0A%20%20%20%20%20%20%20%20%20%20maintaining%20true%3B%0A%20%20%20%20%20%20%20%20%20%20decreasing%20%7CQ%7C%3B%0A%20%20%20%20%20%20%20%20do%0A%20%20%20%20%20%20%20%20%20%20Dequeue%28E%2CQ%29%3B%0A%20%20%20%20%20%20%20%20%20%20Enqueue%28E%2CP%29%3B%0A%20%20%20%20%20%20%20%20end%3B%0A%20%20%20%20end%20Append%3B%0Aend%20Iterative_Append_Realiz%3B")
-			});
-		});
-
-		$( "#verifyButton" ).click(function() {
-			// Do this if we haven't clicked yet
-			if (!clicked) {
-				addNewCodeMirrorGutter(editor);
-			}
-
-			return false;
-		});
-
-		$( "#fontIncrease" ).click(function() {
-			// Increase font size
-			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
-			currentFontSize = parseFloat(currentFontSize) * 1.2;
-			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
-			
-			// Increase gutter width
-			var currentGutterWidth = $( ".CodeMirror-gutters" ).css("width");
-			currentGutterWidth = parseFloat(currentGutterWidth) * 1.2;
-			$( ".CodeMirror-gutters" ).css("width", currentGutterWidth);
-			editor.refresh();
-			
-			return false;
-		});
-		
-		$( "#fontDecrease" ).click(function() {
-			// Decrease font size
-			var currentFontSize = $( ".CodeMirror-code" ).css("font-size");
-			currentFontSize = parseFloat(currentFontSize) / 1.2;
-			$( ".CodeMirror-code" ).css("font-size", currentFontSize);
-			
-			// Decrease gutter width
-			var currentGutterWidth = $( ".CodeMirror-gutters" ).css("width");
-			currentGutterWidth = parseFloat(currentGutterWidth) / 1.2;
-			$( ".CodeMirror-gutters" ).css("width", currentGutterWidth);
-			editor.refresh();
-			
-			return false;
-		});
-	</script>
 </body>
 
 </html>

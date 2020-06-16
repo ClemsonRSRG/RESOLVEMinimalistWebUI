@@ -13,19 +13,33 @@
 	<link rel="icon" type="image/png" href="public/images/resolve_logo.png">
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-		integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" 
-		integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" 
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="public/css/ace-ui.css">
-	
-	<!-- Ace JavaScript Library -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/ace.js" 
-		integrity="sha256-rfN9xU0ELcvTsc3WUaKlvSVEfzLvFCyl+ID09aieASo=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.2/theme-tomorrow.js" 
-		integrity="sha256-55Zsk7fyM+qujBBy8OGc5BtLJVQ+x1TcWtS7REs3fIg=" crossorigin="anonymous"></script>
+
+	<!-- JavaScript -->
+    <script src="https://kit.fontawesome.com/d50a2fb57f.js"></script>
 </head>
 <body>
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.min.js" integrity="sha256-qCCcAHv/Z0u7K344shsZKUF2NR+59ooA3XWRj0LPGIQ=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/theme-tomorrow.min.js" integrity="sha256-YT0+3b7Lo/F3hTpXOp7CEynLJZlByd6HAG71nXasf6s=" crossorigin="anonymous"></script>
+
+	<!-- Ace Rendering JavaScript -->
+	<script src="public/javascript/ace/main.js"></script>
+	<script src="public/javascript/ace/mode-resolve.js"></script>
+	<script src="public/javascript/ace/editorUpdate.js"></script>
+	<script src="public/javascript/test.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			createEditor();
+			createVCEditor();
+		});
+	</script>
+
 	<!-- Page Header -->
 	<header id="page-header" class="d-flex flex-column">
 		<nav class="navbar navbar-expand navbar-dark flex-column flex-lg-row" role="navigation">
@@ -119,23 +133,6 @@
 			</div>
 		</div>
 	</footer>
-
-	<!-- JavaScript Libraries -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-	
-	<!-- Ace Rendering JavaScript -->
-	<script src="public/javascript/ace/main.js"></script>
-	<script src="public/javascript/ace/mode-resolve.js"></script>
-	<script src="public/javascript/ace/editorUpdate.js"></script>
-	<script src="public/javascript/test.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			createEditor();
-			createVCEditor();
-		});
-	</script>
 </body>
 
 </html>
