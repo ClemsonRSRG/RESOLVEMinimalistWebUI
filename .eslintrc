@@ -4,6 +4,9 @@
     "browser": true,
     "jquery": true
   },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "extends": "eslint:recommended",
   "rules": {
     // Possible Errors
